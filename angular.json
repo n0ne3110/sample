@@ -24,9 +24,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng-lts/resources/themes/nova/theme.css",
+              "node_modules/primeng-lts/resources/primeng.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -119,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "DemoApp"
+    }
+  },
+  "defaultProject": "DemoApp",
+  "cli": {
+    "analytics": false
+  }
 }

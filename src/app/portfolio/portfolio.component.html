@@ -1,0 +1,102 @@
+<div class="container">
+  <!-- <div class="row">
+        <div class="col">
+            <p-carousel [value]="technicians" [numVisible]="3" [numScroll]="3" [circular]="true">
+                <p-header>
+                    <h3>Technicians</h3>
+                </p-header>
+                <ng-template let-rowData pTemplate="item">
+                    <div style="border-radius: 3px;
+            margin: 0.3em;
+            text-align: center;
+            padding: 2em 0 2.25em 0;
+            border: 1px solid #b3c2ca">
+                        <h3>{{rowData.name}}</h3>
+                        <b>Rating: </b> &nbsp; {{rowData.address}}
+                        <br>
+                        <p-button label="View Portfolio" (click)="display=true;"></p-button>
+                        <button type="button" pButton icon="pi pi-plus" label="Book with Me!"
+                            routerLink="../appointment"></button>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+    </div> -->
+  <div class="row" style="text-align: center">
+    <div class="col-4" *ngFor="let rowData of technicians">
+      <p-card [style]="{ 'text-align': 'center' }" styleClass="ui-card-shadow">
+        <p-header>
+          <!-- <img src="Card" src="assets/shop1.jpg"> -->
+          <h3>{{ rowData.name }}</h3>
+          <a href="javascript:void(0)" (click)="display = true"
+            >(+) View my Expertise</a
+          >
+          <br /><b>Rating: </b> &nbsp; *****
+        </p-header>
+
+        <p-footer>
+          <!-- <button type="button" pButton label="Book with Me!"
+                        routerLink="../appointment"></button> -->
+          <button
+            type="button"
+            pButton
+            label="Book with Me!"
+            (click)="onTechnicianSelected(rowData)"
+          ></button>
+        </p-footer>
+      </p-card>
+    </div>
+  </div>
+</div>
+<p-dialog
+  header="Technician Name"
+  [(visible)]="display"
+  [style]="{ width: '50vw' }"
+>
+  Vivamus sodales dignissim sollicitudin. Nunc sit amet urna at ipsum malesuada
+  suscipit at et lectus. Nunc feugiat est nisl, ac sagittis lorem auctor et.
+  Quisque tincidunt id elit eu facilisis. Quisque et massa in arcu tristique
+  vulputate in eget arcu. Quisque non luctus erat, non pretium nibh.
+  <p-footer>
+    <!-- <button type="button" pButton label="Book with Me!" routerLink="../appointment"></button> -->
+    <button
+      type="button"
+      pButton
+      icon="pi pi-times"
+      label="Close"
+      class="ui-button-secondary"
+    ></button>
+  </p-footer>
+</p-dialog>
+<p-dialog
+  header="{{ selectedTechnician.name }}"
+  [(visible)]="displayBooking"
+  [style]="{ width: '70vw' }"
+>
+  <div class="row">
+    <div class="col">
+      <div class="row" style="margin-bottom: 10px">
+        <label>Availability</label>
+        <p-calendar [inline]="true" [(ngModel)]="date"></p-calendar>
+        <!-- <p-dropdown appendTo="body" [options]="availability" [style]="{'width':'75%'}">
+                </p-dropdown> -->
+      </div>
+    </div>
+  </div>
+  <p-footer>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-times"
+      label="Cancel"
+      class="p-button-secondary"
+    ></button>
+    <button
+      type="button"
+      pButton
+      class="p-button-success"
+      label="Confirm"
+      routerLink="../confirmation"
+    ></button>
+  </p-footer>
+</p-dialog>

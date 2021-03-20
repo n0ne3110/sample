@@ -1,0 +1,150 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-12" style="margin-top:5px">
+            <p-card header="Facial" subheader="Price: $$$" [style]="{'text-align': 'center'}"
+                styleClass="ui-card-shadow">
+                <p-header>
+                    <!-- <img src="Card" src="assets/shop1.jpg"> -->
+                </p-header>
+
+                <p-footer>
+                    <button pButton type="button" label="Select" (click)="displayFacialDialog=true"
+                        style="margin-right: .25em"></button>
+                </p-footer>
+            </p-card>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12" style="margin-top:5px">
+            <p-card header="Waxing" subheader="Price: $$$" [style]="{'text-align': 'center'}"
+                styleClass="ui-card-shadow">
+                <p-header>
+                    <!-- <img src="Card" src="assets/shop1.jpg"> -->
+                </p-header>
+
+                <p-footer>
+                    <button pButton type="button" label="Select" (click)="displayWaxingDialog=true"
+                        style="margin-right: .25em"></button>
+                </p-footer>
+            </p-card>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12" style="margin-top:5px">
+            <p-card header="Manicure" subheader="Price: $$$" [style]="{'text-align': 'center'}"
+                styleClass="ui-card-shadow">
+                <p-header>
+                    <!-- <img src="Card" src="assets/shop1.jpg"> -->
+                </p-header>
+
+                <p-footer>
+                    <button pButton type="button" label="Select" (click)="display=true;dialogTitle='Manicure'"
+                        style="margin-right: .25em"></button>
+                </p-footer>
+            </p-card>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12" style="margin-top:5px">
+            <p-card header="Pedicure" subheader="Price: $$$" [style]="{'text-align': 'center'}"
+                styleClass="ui-card-shadow">
+                <p-header>
+                    <!-- <img src="Card" src="assets/shop1.jpg"> -->
+                </p-header>
+
+                <p-footer>
+                    <button pButton type="button" label="Select" (click)="display=true;dialogTitle='Pedicure'"
+                        style="margin-right: .25em"></button>
+                </p-footer>
+            </p-card>
+        </div>
+    </div>
+
+    <p-sidebar [(visible)]="displayCart" position="right">
+        <ol>
+            <li *ngFor="let i of selectedServices">
+                {{i}}
+            </li>
+        </ol>
+        <!-- <hr> -->
+        <button pButton type="button" label="Continue Shopping" (click)="onContinueClicked()"
+            style="margin-right: .25em"></button>
+        <button pButton type="button" label="I'm done" class="p-button-success" routerLink="../portfolio"
+            style="margin-right: .25em"></button>
+    </p-sidebar>
+
+
+</div>
+<div style="position:absolute; bottom:20px; right: 20px">
+    <button pButton (click)="displayCart = true" type="button" label="Cart" icon="fa fa-shopping-cart"
+        class="ui-button-rounded ui-button-success"></button>
+</div>
+<p-dialog header="Facial" [(visible)]="displayFacialDialog" [style]="{width: '50vw','height':'50vh'}" [modal]="true">
+    <div class="row">
+        <div class="col" style="margin-top:5px">
+            <div class="row">
+                <div class="col-4">
+                    <img src="assets/shop1.jpg" alt="temporary" width="200" height="200">
+                    <!-- <p-card header="Facial" subheader="Price: $$$"
+                    [style]="{'text-align': 'center','display':'inline-block'}" styleClass="ui-card-shadow">
+                </p-card> -->
+
+                </div>
+                <div class="col">
+                    <div class="row" style="margin-bottom: 10px;">
+                        <label>Type of Facial</label>
+                        <p-dropdown appendTo="body" [options]="facialTypes" [style]="{'width':'75%'}">
+                        </p-dropdown>
+                    </div>
+                    <div class="row">
+                        <p-dropdown placeholder="Choose your scrub" appendTo="body" [options]="facialScrubs"
+                            [style]="{'width':'75%'}">
+                        </p-dropdown>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-plus" (click)="addService('Facial')" label="Add Service"></button>
+        <button type="button" pButton icon="pi pi-times" label="Cancel" class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>
+<p-dialog header="Waxing" [(visible)]="displayWaxingDialog" [style]="{width: '50vw','height':'50vh'}" [modal]="true">
+    <div class="row">
+        <div class="col" style="margin-top:5px">
+            <div class="row">
+                <div class="col-4">
+                    <img src="assets/shop1.jpg" alt="temporary" width="200" height="200">
+                    <!-- <p-card header="Facial" subheader="Price: $$$"
+                    [style]="{'text-align': 'center','display':'inline-block'}" styleClass="ui-card-shadow">
+                </p-card> -->
+
+                </div>
+                <div class="col">
+                    <div class="row" style="margin-bottom: 10px;">
+                        <label>Face</label>
+                        <p-multiSelect appendTo="body" [showHeader]="false" [showToggleAll]="false" [filter]="false"
+                            [options]="waxingFaceTypes" [style]="{'width':'75%'}">
+                        </p-multiSelect>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <label>Upper Body</label>
+                        <p-multiSelect appendTo="body" [showHeader]="false" [showToggleAll]="false" [filter]="false"
+                            [options]="waxingUpperBodyTypes" [style]="{'width':'75%'}">
+                        </p-multiSelect>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <label>Lower Body</label>
+                        <p-multiSelect appendTo="body" [showHeader]="false" [showToggleAll]="false" [filter]="false"
+                            [options]="waxingLowerBodyTypes" [style]="{'width':'75%'}">
+                        </p-multiSelect>
+                    </div>
+                    <!-- <div class="row">
+                        <p-dropdown placeholder="Choose your scrub" appendTo="body" [options]="facialScrubs"
+                            [style]="{'width':'75%'}">
+                        </p-dropdown>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-plus" (click)="addService('Waxing')" label="Add Service"></button>
+        <button type="button" pButton icon="pi pi-times" label="Cancel" class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>
